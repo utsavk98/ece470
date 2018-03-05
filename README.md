@@ -18,8 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 There are a few prerequisite knowledge and programs that will be required in order to accomplish the required steps. Our code which interacts with V-REP is python. Note, these are directions and prerequisites for a windows operating system. 
 
 ```
-Python
-Editing program such as Sublime or Spyder if editing program is desired
+Python 3
 Anaconda Prompt
 ```
 
@@ -59,12 +58,19 @@ This can be done by terminal via launching the program directly.
 
 Step 2. Load Our Scene
 ```
-Go to the file menu, then "Open scene..." then navigate to the saved scene provided. 
+Go to the file menu, then "Open scene..." then navigate to RobotArmTry1.ttt. 
 ```
 Step 3. Run the Python Code
+```
+Open an Anaconda prompt in the folder containing your scene and .py executable. 
+In your prompt type down 'python UR3.py' and the press enter.
 
+```
 Step 4. Watch the Magic
 
+```
+Switch to your simulator (V-REP) and watch the robot move.
+```
 ## Authors
 
 * **Utsav Kawrani** 
