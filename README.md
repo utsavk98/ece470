@@ -38,10 +38,10 @@ Step 3. Organize and Set-Up Folders and Files
 ```
 This will enable more seemless working later. First, create a folder for this project, labelling it whatever fills your heart with joy. 
 
-Download our team's source code into this folder. 
+Download our team's source code into this folder. It is called "RobotArmTry1.ttt".
 
-Download our team's scene into this folder.
-
+Download our team's scene into this folder. It is called "UR3.py".
+'
 In this folder, there are three other files which must also be included. 
 *v-rep.py - located: vrep/programming/remoteApiBindings/python/python/vrep.py
 *vrepConst.py - located: vrep/programming/remoteApiBindings/python/python/vrepConst.py
