@@ -20,6 +20,7 @@ There are a few prerequisite knowledge and programs that will be required in ord
 ```
 Python 3
 Anaconda Prompt
+Jupyter Lab
 ```
 
 ### Installing & Downloading
@@ -38,7 +39,7 @@ Step 3. Organize and Set-Up Folders and Files
 ```
 This will enable more seemless working later. First, create a folder for this project, labelling it whatever fills your heart with joy. 
 
-Download our team's source code into this folder. It is called "RobotArmTry1.ttt".
+Download our team's source code into this folder. It is called "RobotArmTry1.ttt", for forward kinematics download "project.ipynb".
 
 Download our team's scene into this folder. It is called "UR3.py".
 '
@@ -49,8 +50,9 @@ In this folder, there are three other files which must also be included.
 ```
 
 
-## Running our Simulation
+## Running the Simulation
 
+These directions are for running the initial demo simulation. Directions for running the forward kinematics simulation are below.
 Step 1. Launch V-REP
 ```
 This can be done by terminal via launching the program directly.
@@ -71,6 +73,24 @@ Step 4. Watch the Magic
 ```
 Switch to your simulator (V-REP) and watch the robot move.
 ```
+If you desire to view the simulation for forward kinematics, see the below directions:
+
+Step 1. Launch V-REP
+```
+This can be done by terminal via launching the program directly.
+```
+
+Step 2. Load Our Scene
+```
+Go to the file menu, then "Open scene..." then navigate to RobotArmTry1.ttt. 
+
+Step 3. Open "Project.ipynb" in JupyterLab
+```
+One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
+
+```
+Step 4. Watch the Magic
+
 ## Authors
 
 * **Utsav Kawrani** 
