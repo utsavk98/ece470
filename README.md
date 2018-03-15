@@ -84,9 +84,9 @@ Step 2. Load Our Scene
 ```
 Go to the file menu, then "Open scene..." then navigate to RobotArmTry1.ttt. 
 
-Step 3. Open "Project.ipynb" in JupyterLab
+Step 3. Open "Project.ipynb" in JupyterLab - this represents the code as we submitted for the checkpoint time. A correct code is found in "ForwardKin.ipynb"
 ```
-One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
+One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" or "ForwardKin.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
 
 ```
 Step 4. Watch the Magic
