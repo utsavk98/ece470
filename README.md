@@ -39,7 +39,7 @@ Step 3. Organize and Set-Up Folders and Files
 ```
 This will enable more seemless working later. First, create a folder for this project, labelling it whatever fills your heart with joy. 
 
-Download our team's source code into this folder. It is called "RobotArmTry1.ttt", for forward kinematics download "project.ipynb".
+Download our team's source code into this folder. It is called "RobotArmTry1.ttt", for forward kinematics download "project.ipynb" or "ForwardKinematics.ipynb". The first file ("project.ipynb" was our code as of the checkpoint, "ForwardKinematics.ipynb" is a corrected version of the code for forward kinematics.
 
 Download our team's scene into this folder. It is called "UR3.py".
 '
@@ -84,9 +84,9 @@ Step 2. Load Our Scene
 ```
 Go to the file menu, then "Open scene..." then navigate to RobotArmTry1.ttt. 
 
-Step 3. Open "Project.ipynb" in JupyterLab
+Step 3. Open "Project.ipynb" in JupyterLab - this represents the code as we submitted for the checkpoint time. A correct code is found in "ForwardKin.ipynb"
 ```
-One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
+One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" or "ForwardKinematics.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
 
 ```
 Step 4. Watch the Magic
