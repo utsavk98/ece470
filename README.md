@@ -39,9 +39,7 @@ Step 3. Organize and Set-Up Folders and Files
 ```
 This will enable more seemless working later. First, create a folder for this project, labelling it whatever fills your heart with joy. 
 
-Download our team's source code into this folder. It is called "RobotArmTry1.ttt", for forward kinematics download "project.ipynb" or "ForwardKinematics.ipynb". The first file ("project.ipynb" was our code as of the checkpoint, "ForwardKinematics.ipynb" is a corrected version of the code for forward kinematics.
-
-Download our team's scene into this folder. It is called "UR3.py".
+Download our team's source code into this folder. The scene is called "RobotForwardKin.ttt" and the source code is "project.ipynb".
 '
 In this folder, there are three other files which must also be included. 
 *v-rep.py - located: vrep/programming/remoteApiBindings/python/python/vrep.py
@@ -52,28 +50,6 @@ In this folder, there are three other files which must also be included.
 
 ## Running the Simulation
 
-These directions are for running the initial demo simulation. Directions for running the forward kinematics simulation are below.
-Step 1. Launch V-REP
-```
-This can be done by terminal via launching the program directly.
-```
-
-Step 2. Load Our Scene
-```
-Go to the file menu, then "Open scene..." then navigate to RobotArmTry1.ttt. 
-```
-Step 3. Run the Python Code
-```
-Open an Anaconda prompt in the folder containing your scene and .py executable. 
-In your prompt type down 'python UR3.py' and the press enter.
-
-```
-Step 4. Watch the Magic
-
-```
-Switch to your simulator (V-REP) and watch the robot move.
-```
-If you desire to view the simulation for forward kinematics, see the below directions:
 
 Step 1. Launch V-REP
 ```
@@ -82,9 +58,9 @@ This can be done by terminal via launching the program directly.
 
 Step 2. Load Our Scene
 ```
-Go to the file menu, then "Open scene..." then navigate to RobotArmTry1.ttt. 
+Go to the file menu, then "Open scene..." then navigate to RobotForwardKin.ttt. 
 
-Step 3. Open "Project.ipynb" in JupyterLab - this represents the code as we submitted for the checkpoint time. A correct code is found in "ForwardKin.ipynb"
+Step 3. Open "Project.ipynb" in JupyterLab - this represents the code as we submitted for the checkpoint time.
 ```
 One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" or "ForwardKinematics.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
 
