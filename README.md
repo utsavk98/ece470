@@ -58,11 +58,11 @@ This can be done by terminal via launching the program directly.
 
 Step 2. Load Our Scene
 ```
-Go to the file menu, then "Open scene..." then navigate to RobotForwardKin.ttt. 
+Go to the file menu, then "Open scene..." then navigate to RobotForwardKin.ttt. For a demonstration of Collision Detection, open "Collide.ttt"
 
 Step 3. Open "Project.ipynb" in JupyterLab - this represents the code as we submitted for the checkpoint time.
 ```
-One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" or "ForwardKinematics.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
+One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
 
 ```
 Step 4. Watch the Magic
