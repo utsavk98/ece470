@@ -2,27 +2,27 @@
 clear
 clc
 
-S = [0.00 0.00 0.00 0.00 0.00 0.00; 0.00 1.00 1.00 0.00 1.00 0.00; 0.00 0.00 0.00 -1.00 0.00 0.00; 0.00 2.00 4.00 0.00 6.00 0.00; 0.00 0.00 0.00 0.00 0.00 1.00; -1.00 -2.00 0.00 0.00 -2.00 0.00];
-M = [0.00 0.00 1.00 -4.00; 1.00 0.00 0.00 0.00; 0.00 1.00 0.00 -2.00; 0.00 0.00 0.00 1.00];
-p_robot = [0.00 -2.00 -2.00 0.00 0.00 -2.00 -4.00 -4.00; 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00; 0.00 0.00 -2.00 -4.00 -6.00 -6.00 -4.00 -2.00];
-r_robot = [0.90 0.90 0.90 0.90 0.90 0.90 0.90 0.90];
-p_obstacle = [0.78 -1.63 1.76 -4.28 -0.43 1.65 -4.04 -2.95 2.41 -2.57 -1.26 0.96 -1.75 -1.12 -4.65; 2.48 1.69 -1.82 1.28 -1.46 -4.49 0.63 3.98 -4.95 -1.85 4.88 -1.58 3.30 -2.13 -4.22; 4.18 4.86 -2.69 4.88 2.24 4.85 2.27 3.61 -2.92 -3.78 -4.30 3.72 0.96 -3.54 1.83];
-r_obstacle = [1.57 1.33 0.82 3.46 0.72 1.47 1.39 2.17 2.99 0.71 1.59 2.25 2.19 1.47 3.40];
-theta_start = [0.11; 0.82; -2.80; 1.92; -2.10; 2.41];
-theta_goal = [0.64; 3.07; -1.98; 1.17; -0.71; -0.36];
+S = [-1.00 0.00 0.00; 0.00 0.00 1.00; 0.00 -1.00 0.00; 0.00 0.00 2.00; -2.00 -2.00 0.00; 0.00 0.00 0.00];
+M = [-1.00 0.00 0.00 0.00; 0.00 1.00 0.00 0.00; 0.00 0.00 -1.00 -4.00; 0.00 0.00 0.00 1.00];
+p_robot = [0.00 0.00 -2.00 0.00 0.00; 0.00 0.00 0.00 0.00 0.00; 0.00 2.00 2.00 -2.00 -4.00];
+r_robot = [0.90 0.90 0.90 0.90 0.90];
+p_obstacle = [4.83 2.68 2.46 3.25 4.10 2.69 1.81 3.87 4.74 1.53 4.51 4.98 3.63 1.42 3.52; 4.10 4.98 2.66 -2.46 4.78 -1.99 1.98 3.13 2.32 2.22 -2.75 -2.72 1.28 4.34 -4.11; 4.60 4.27 -3.42 -1.91 -3.37 -2.10 -3.97 -3.87 -3.05 -2.66 -2.64 -3.15 1.96 2.68 -2.20];
+r_obstacle = [1.21 2.14 1.52 0.91 4.77 2.50 1.31 1.76 2.83 1.64 2.72 4.28 2.92 1.54 0.64];
+theta_start = [-2.68; 1.49; 0.26];
+theta_goal = [1.60; -0.20; -1.98];
 
 
 num_ob=15;
-robot_num=8;
+robot_num=5;
 p_obstacle=[p_obstacle; ones(1,num_ob)];
-joint_num=6;
+joint_num=3;
 
-ss1=s_screw(S(:,1));
-ss2=s_screw(S(:,2));
-ss3=s_screw(S(:,3));
-ss4=s_screw(S(:,4));
-ss5=s_screw(S(:,5));
-ss6=s_screw(S(:,6));
+ss1=skew4(S(:,1));
+ss2=skew4(S(:,2));
+ss3=skew4(S(:,3));
+% ss4=skew4(S(:,4));
+% ss5=skew4(S(:,5));
+% ss6=skew4(S(:,6));
 %ss7=s_screw(S(:,7));
 
 %Step 1 - Check a straight line path between theta start and theta goal to
@@ -36,12 +36,12 @@ for s=0:.01:1
     j1=expm(ss1*theta_now(1));
     j2=expm(ss2*theta_now(2));
     j3=expm(ss3*theta_now(3));
-    j4=expm(ss4*theta_now(4));
-    j5=expm(ss5*theta_now(5));
-    j6=expm(ss6*theta_now(6));
-    %j7=expm(ss7*theta_now(7));
+%     j4=expm(ss4*theta_now(4));
+%     j5=expm(ss5*theta_now(5));
+%     j6=expm(ss6*theta_now(6));
+%     %j7=expm(ss7*theta_now(7));
     %
-    T_end=j1*j2*j3*j4*j5*j6*M; %BE CAREFUL ON THIS LINE!!
+    T_end=j1*j2*j3*M; %BE CAREFUL ON THIS LINE!!
     
     %p1 doesn't change
     %p2 doesn't change
@@ -49,12 +49,12 @@ for s=0:.01:1
     p3=j1*p_r_new(1:4,3);
     p4=j1*j2*p_r_new(1:4,4);
     p5=j1*j2*j3*p_r_new(1:4,5);
-    p6=j1*j2*j3*j4*p_r_new(1:4,6);
-    p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
+%     p6=j1*j2*j3*j4*p_r_new(1:4,6);
+%     p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
     %p8=j1*j2*j3*j4*j5*j6*p_r_new(1:4,8);
     pend=T_end(1:4,4);
     
-    p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 p6 p7 pend]; % BE CAREFUL ON THIS LINE
+    p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 pend]; % BE CAREFUL ON THIS LINE
     
     %Collision Checker - if the robot is in self-collision
     check=self_collide(robot_num,p_r,r_robot); %this function checks each joint of the robot against itself at a given configuration
@@ -102,23 +102,23 @@ if d==1 %this means that the initial path did not work!
         j1=expm(ss1*t_r(1));
         j2=expm(ss2*t_r(2));
         j3=expm(ss3*t_r(3));
-        j4=expm(ss4*t_r(4));
-        j5=expm(ss5*t_r(5));
-        j6=expm(ss6*t_r(6));
+%         j4=expm(ss4*t_r(4));
+%         j5=expm(ss5*t_r(5));
+%         j6=expm(ss6*t_r(6));
         %j7=expm(ss7*t_r(7));
         
-        T_end=j1*j2*j3*j4*j5*j6*M; %BE CAREFUL ON THIS LINE!!
+        T_end=j1*j2*j3*M; %BE CAREFUL ON THIS LINE!!
         
         p_r_new=[p_robot; ones(1,robot_num)];
         p3=j1*p_r_new(1:4,3);
         p4=j1*j2*p_r_new(1:4,4);
         p5=j1*j2*j3*p_r_new(1:4,5);
-        p6=j1*j2*j3*j4*p_r_new(1:4,6);
-        p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
+%         p6=j1*j2*j3*j4*p_r_new(1:4,6);
+%         p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
         %p8=j1*j2*j3*j4*j5*j6*p_r_new(1:4,8);
         pend=T_end(1:4,4);
         
-        p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 p6 p7 pend]; % BE CAREFUL ON THIS LINE
+        p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 pend]; % BE CAREFUL ON THIS LINE
         
         
         %B - determine if there is a collision at this value
@@ -175,23 +175,23 @@ if d==1 %this means that the initial path did not work!
                 j1=expm(ss1*theta_test(1));
                 j2=expm(ss2*theta_test(2));
                 j3=expm(ss3*theta_test(3));
-                j4=expm(ss4*theta_test(4));
-                j5=expm(ss5*theta_test(5));
-                j6=expm(ss6*theta_test(6));
+%                 j4=expm(ss4*theta_test(4));
+%                 j5=expm(ss5*theta_test(5));
+%                 j6=expm(ss6*theta_test(6));
                 %j7=expm(ss7*theta_test(7));
                 %
-                T_end=j1*j2*j3*j4*j5*j6*M; %BE CAREFUL ON THIS LINE!!
+                T_end=j1*j2*j3*M; %BE CAREFUL ON THIS LINE!!
                 
                 p_r_new=[p_robot; ones(1,robot_num)];
                 p3=j1*p_r_new(1:4,3);
                 p4=j1*j2*p_r_new(1:4,4);
                 p5=j1*j2*j3*p_r_new(1:4,5);
-                p6=j1*j2*j3*j4*p_r_new(1:4,6);
-                p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
+%                 p6=j1*j2*j3*j4*p_r_new(1:4,6);
+%                 p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
                 %p8=j1*j2*j3*j4*j5*j6*p_r_new(1:4,8);
                 pend=T_end(1:4,4);
                 
-                p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 p6 p7 pend]; % BE CAREFUL ON THIS LINE
+                p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 pend]; % BE CAREFUL ON THIS LINE
                 
                 %Collision Checker - if the robot is in self-collision
                 check3=self_collide(robot_num,p_r,r_robot); %this function checks each joint of the robot against itself at a given configuration
@@ -221,23 +221,23 @@ if d==1 %this means that the initial path did not work!
                         j1=expm(ss1*theta_test1(1));
                         j2=expm(ss2*theta_test1(2));
                         j3=expm(ss3*theta_test1(3));
-                        j4=expm(ss4*theta_test1(4));
-                        j5=expm(ss5*theta_test1(5));
-                        j6=expm(ss6*theta_test1(6));
+%                         j4=expm(ss4*theta_test1(4));
+%                         j5=expm(ss5*theta_test1(5));
+%                         j6=expm(ss6*theta_test1(6));
                         %j7=expm(ss7*theta_test1(7));
                         %
-                        T_end=j1*j2*j3*j4*j5*j6*j7*M; %BE CAREFUL ON THIS LINE!!
+                        T_end=j1*j2*j3*M; %BE CAREFUL ON THIS LINE!!
                         
                         p_r_new=[p_robot; ones(1,robot_num)];
                         p3=j1*p_r_new(1:4,3);
                         p4=j1*j2*p_r_new(1:4,4);
                         p5=j1*j2*j3*p_r_new(1:4,5);
-                        p6=j1*j2*j3*j4*p_r_new(1:4,6);
-                        p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
+%                         p6=j1*j2*j3*j4*p_r_new(1:4,6);
+%                         p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
                         %p8=j1*j2*j3*j4*j5*j6*p_r_new(1:4,8);
                         pend=T_end(1:4,4);
                         
-                        p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 p6 p7 pend]; % BE CAREFUL ON THIS LINE
+                        p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 pend]; % BE CAREFUL ON THIS LINE
                         
                         %Collision Checker - if the robot is in self-collision
                         check3=self_collide(robot_num,p_r,r_robot); %this function checks each joint of the robot against itself at a given configuration
@@ -257,6 +257,8 @@ if d==1 %this means that the initial path did not work!
                         fprintf('It connects, cool!\n')
                         fprintf('Final node on start tree connects to node on end tree %d\n',node_e)
                         finish=1;
+                        [garbage,node_s] = size(start_tree);
+                        node_e = node_e*2;
                     end
                     
                     
@@ -273,23 +275,23 @@ if d==1 %this means that the initial path did not work!
                         j1=expm(ss1*theta_test1(1));
                         j2=expm(ss2*theta_test1(2));
                         j3=expm(ss3*theta_test1(3));
-                        j4=expm(ss4*theta_test1(4));
-                        j5=expm(ss5*theta_test1(5));
-                        j6=expm(ss6*theta_test1(6));
+%                         j4=expm(ss4*theta_test1(4));
+%                         j5=expm(ss5*theta_test1(5));
+%                         j6=expm(ss6*theta_test1(6));
                         %j7=expm(ss7*theta_test1(7));
                         %
-                        T_end=j1*j2*j3*j4*j5*j6*M; %BE CAREFUL ON THIS LINE!!
+                        T_end=j1*j2*j3*M; %BE CAREFUL ON THIS LINE!!
                         
                         p_r_new=[p_robot; ones(1,robot_num)];
                         p3=j1*p_r_new(1:4,3);
                         p4=j1*j2*p_r_new(1:4,4);
                         p5=j1*j2*j3*p_r_new(1:4,5);
-                        p6=j1*j2*j3*j4*p_r_new(1:4,6);
-                        p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
+%                         p6=j1*j2*j3*j4*p_r_new(1:4,6);
+%                         p7=j1*j2*j3*j4*j5*p_r_new(1:4,7);
                         %p8=j1*j2*j3*j4*j5*j6*p_r_new(1:4,8);
                         pend=T_end(1:4,4);
                         
-                        p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 p6 p7 pend]; % BE CAREFUL ON THIS LINE
+                        p_r=[p_r_new(:,1) p_r_new(:,2) p3 p4 p5 pend]; % BE CAREFUL ON THIS LINE
                         
                         %Collision Checker - if the robot is in self-collision
                         check3=self_collide(robot_num,p_r,r_robot); %this function checks each joint of the robot against itself at a given configuration
@@ -309,6 +311,8 @@ if d==1 %this means that the initial path did not work!
                         fprintf('It connects, cool!\n')
                         fprintf('Final node on end tree connects to node on start tree %d\n',node_s)
                         finish=2;
+                        [garbage,node_e] = size(end_tree);
+                        node_s = node_s*2;
                     end
                     
                 end
@@ -327,6 +331,26 @@ end
 
 start_tree
 end_tree
+
+parent = end_tree(1,node_e);
+final_tree = [end_tree(:,node_e-1)];
+while parent~=0
+    final_tree = [final_tree end_tree(:,parent*2-1)];
+    parent = end_tree(1,parent*2);
+end
+
+parent = start_tree(1,node_s);
+final_tree = [start_tree(:,node_s-1) final_tree];
+while parent~=0
+    final_tree = [start_tree(:,parent*2-1) final_tree];
+    parent = start_tree(1,parent*2);
+end
+
+
+final_tree
+
+
+
 
 
 
