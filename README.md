@@ -39,7 +39,7 @@ Step 3. Organize and Set-Up Folders and Files
 ```
 This will enable more seemless working later. First, create a folder for this project, labelling it whatever fills your heart with joy. 
 
-Download our team's source code into this folder. The scene is called "RobotForwardKin.ttt" and the source code is "project.ipynb".
+Download our team's source code into this folder. The scene is called "Collision Path.ttt" and the source code is "project.ipynb".
 '
 In this folder, there are three other files which must also be included. 
 *v-rep.py - located: vrep/programming/remoteApiBindings/python/python/vrep.py
@@ -58,7 +58,7 @@ This can be done by terminal via launching the program directly.
 
 Step 2. Load Our Scene
 ```
-Go to the file menu, then "Open scene..." then navigate to RobotForwardKin.ttt. For a demonstration of Collision Detection, open "Collide.ttt"
+Go to the file menu, then "Open scene..." then navigate to RobotForwardKin.ttt. For a demonstration of Collision Detection, open "Collision Path.ttt"
 
 Step 3. Open "Project.ipynb" in JupyterLab - this represents the code as we submitted for the checkpoint time.
 ```
