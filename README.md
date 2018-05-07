@@ -7,7 +7,7 @@ Molly Sturgis
 
 5 March 2018
 
-The overall goal of this semester project is to simulate a robot doing a task. For our team's project, we are simulating the filling of a pill organizer with medications. This specific READ ME file covers the installation of a robot simulation software (V-REP) and executing a basic scene where the robot articulates each joint.
+The overall goal of this semester project is to simulate a robot doing a task. For our team's project, we are simulating a firefighting robot.  This READ ME file covers the installation of a robot simulation software (V-REP) and executing the simulation.
 
 ## Getting Started
 
@@ -39,7 +39,7 @@ Step 3. Organize and Set-Up Folders and Files
 ```
 This will enable more seemless working later. First, create a folder for this project, labelling it whatever fills your heart with joy. 
 
-Download our team's source code into this folder. The scene is called "Collision Path.ttt" and the source code is "project.ipynb".
+Download our team's source code into this folder. The scene is called "Final_Scene_water.ttt" and the source code is "project.ipynb".
 '
 In this folder, there are three other files which must also be included. 
 *v-rep.py - located: vrep/programming/remoteApiBindings/python/python/vrep.py
@@ -58,11 +58,11 @@ This can be done by terminal via launching the program directly.
 
 Step 2. Load Our Scene
 ```
-Go to the file menu, then "Open scene..." then navigate to RobotForwardKin.ttt. For a demonstration of Collision Detection, open "Collision Path.ttt"
+Go to the file menu, then "Open scene..." then navigate to Final_Scene_Water.ttt
 
-Step 3. Open "Project.ipynb" in JupyterLab - this represents the code as we submitted for the checkpoint time.
+Step 3. Open "Project.ipynb" in JupyterLab 
 ```
-One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" was saved. Press the play button which is located on the toolbar directly below the tab with the name of the file. 
+One can do this by opening JupyterLab and navigating to the location where "Project.ipynb" was saved. Press the run button which is located on the toolbar directly below the tab with the name of the file. 
 
 ```
 Step 4. Watch the Magic
@@ -76,3 +76,4 @@ Step 4. Watch the Magic
 ## Acknowledgments
 
 * Thank you to moms, specifically ours
+* Dads are cool too
